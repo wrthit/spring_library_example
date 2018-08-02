@@ -1,0 +1,30 @@
+{
+    "run": {
+        "default": "",
+        "items": [
+            {
+                "name": "demo",
+                "projectName": "demo",
+                "workingDirectory": "c:\\Users\\hicjo02\\Documents\\projects\\spring_library_example",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    },
+    "debug": {
+        "default": "",
+        "items": [
+            {
+                "name": "demo",
+                "projectName": "demo",
+                "workingDirectory": "c:\\Users\\hicjo02\\Documents\\projects\\spring_library_example",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    }
+}

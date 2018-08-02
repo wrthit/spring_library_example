@@ -1,6 +1,5 @@
 package com.example.demo.models;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -14,10 +13,8 @@ public class Location{
 
     private String city;
 
-    @Column
     private Float latitude;
 
-    @Column
     private Float longitude;
 
     public Location(){

@@ -1,35 +1,41 @@
 package com.example.demo.models;
 
-import java.util.Date;
+import java.time.LocalDate;
 
-import javax.persistence.Column;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import com.example.demo.models.Location;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Library {
 
     @Id
     @GeneratedValue
-    private Long id;
+    private Long library_id;
 
     private String name;
 
-    @Column(nullable = false)
-    private Date openDate;
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="MM/dd/yyyy")
+    @DateTimeFormat(pattern="MM-dd-yyyy")
+    private LocalDate openDate;
 
-    @OneToOne
-    @Column(nullable = false)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name="loc")
     private Location location;
 
     public Library(){
         super();
     }
 
-    public Library (String name, Date openDate, Location location){
+    public Library (String name, LocalDate openDate, Location location){
         super();
         this.name = name;
         this.openDate = openDate;
@@ -44,11 +50,11 @@ public class Library {
         this.name = name;
     }    
 
-    public Date getOpenDate(){
+    public LocalDate getOpenDate(){
         return openDate;
     }
 
-    public void setOpenDate(Date openDate){
+    public void setOpenDate(LocalDate openDate){
         this.openDate = openDate;
     }
 
@@ -59,4 +65,9 @@ public class Library {
     public void setLocation(Location location){
         this.location = location;
     }
+
+    public Long getLibraryId(){
+        return library_id;
+    }
+
 }
