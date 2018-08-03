@@ -1,5 +1,6 @@
 package com.example.demo.models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -9,6 +10,7 @@ public class Location{
 
     @Id
     @GeneratedValue
+    @Column(name = "location_id")
     private Long id;
 
     private String city;

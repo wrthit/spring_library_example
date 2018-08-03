@@ -28,7 +28,7 @@ public class Library {
     private LocalDate openDate;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name="loc")
+    @JoinColumn(name="location_id")
     private Location location;
 
     public Library(){

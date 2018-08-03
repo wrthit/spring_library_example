@@ -1,6 +1,7 @@
 package com.example.demo.controllers;
 
 import com.example.demo.repositories.LibraryRepository;
+import com.example.demo.repositories.LocationRepository;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -29,6 +30,9 @@ public class LibraryRestControllerTest{
 
     @MockBean
     private LibraryRepository libraryRepo;
+
+    @MockBean
+    private LocationRepository locationRepo;
 
     @Before
     public void setup(){
