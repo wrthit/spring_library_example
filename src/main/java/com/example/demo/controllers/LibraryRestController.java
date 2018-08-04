@@ -83,19 +83,22 @@ public class LibraryRestController{
         return response;
     }
 
-     //delete all libraries
-     @DeleteMapping(value="/erase")
-     @ResponseStatus(HttpStatus.OK)
-     public void deleteAllLibraries(){
+    //delete all libraries opened after startDate before endDate in a location defined by lat/long
+    @RequestMapping(value="/erase", method=RequestMethod.DELETE, params={"startDate", "endDate", "lat", "long"})
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteSomeLibraries(@RequestParam @DateTimeFormat(pattern = "MM-dd-yyyy") LocalDate startDate, @RequestParam @DateTimeFormat(pattern="MM-dd-yyyy") LocalDate endDate,
+            @RequestParam("lat") Float latitude, @RequestParam("long") Float longitude){
+        //get filtered libraries
+        List<Library> resultSet = libraryRepo.findLibrariesByParams(startDate, endDate, latitude, longitude);
+        libraryRepo.deleteByBatch(resultSet);
+    }
+
+    //delete all libraries
+    @DeleteMapping(value="/erase")
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteAllLibraries(){
         libraryRepo.deleteAll();
-     }
-
-    // //delete all libraries opened after startDate before endDate in a location defined by lat/long
-    // @DeleteMapping(value="/erase")
-    // @ResponseStatus(HttpStatus.OK)
-    // public void deleteSomeLibraries(){
-
-    // }
+    }
 
     //post library
     //return 409 if library exist at location

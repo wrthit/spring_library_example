@@ -16,6 +16,9 @@ public interface LibraryRepository extends JpaRepository<Library, Long>{
     @Query("SELECT lib From Library lib join fetch lib.location loc where loc.latitude = :latitude and loc.longitude = :longitude order by lib.name")
     List<Library> getLibrariesByLocation(Float latitude, Float longitude);
 
+    @Query("")
+    List<Library> getLibrariesByParams(LocalDate startDate, LocalDate endDate, Float latitude, Float longitude);
+
     @Override
     @Query("Select lib from Library lib order by name")
     List<Library> findAll();
