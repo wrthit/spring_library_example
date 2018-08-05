@@ -89,8 +89,8 @@ public class LibraryRestController{
     public void deleteSomeLibraries(@RequestParam @DateTimeFormat(pattern = "MM-dd-yyyy") LocalDate startDate, @RequestParam @DateTimeFormat(pattern="MM-dd-yyyy") LocalDate endDate,
             @RequestParam("lat") Float latitude, @RequestParam("long") Float longitude){
         //get filtered libraries
-        List<Library> resultSet = libraryRepo.findLibrariesByParams(startDate, endDate, latitude, longitude);
-        libraryRepo.deleteByBatch(resultSet);
+        List<Library> resultSet = libraryRepo.getLibrariesByParams(startDate, endDate, latitude, longitude);
+        libraryRepo.deleteInBatch(resultSet);
     }
 
     //delete all libraries
